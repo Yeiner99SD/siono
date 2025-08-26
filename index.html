@@ -14,6 +14,7 @@
       background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       text-align: center;
       overflow: hidden;
+      margin: 0;
     }
     .container {
       background: white;
@@ -81,18 +82,23 @@
       message.textContent = "¡Uyy, ya sabía! 😏😂";
     });
 
-    noBtn.addEventListener("mouseover", () => {
+    // Para mover el botón "No" en PC y móvil
+    noBtn.addEventListener("click", () => {
+      moverBoton();
+    });
+
+    function moverBoton() {
       const container = document.querySelector(".container");
       const containerRect = container.getBoundingClientRect();
       const btnRect = noBtn.getBoundingClientRect();
 
-      // generar nueva posición dentro del contenedor
+      // Nueva posición aleatoria dentro del contenedor
       const offsetX = Math.floor(Math.random() * (containerRect.width - btnRect.width));
       const offsetY = Math.floor(Math.random() * (containerRect.height - btnRect.height - 50)) + 50;
 
       noBtn.style.left = offsetX + "px";
       noBtn.style.top = offsetY + "px";
-    });
+    }
   </script>
 </body>
 </html>
